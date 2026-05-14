@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'product_list_page.dart';
+
+import '../../screens/product_list_screen.dart';
 
 class InitialPage extends StatelessWidget {
   const InitialPage({super.key});
@@ -15,7 +16,7 @@ class InitialPage extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ProductListPage()),
+              MaterialPageRoute(builder: (context) => const ProductListScreen()),
             );
           },
         ),
