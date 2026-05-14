@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
-<<<<<<< HEAD
 import '../state/provider/auth_provider.dart';
-=======
->>>>>>> main
 import '../state/provider/product_provider.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
@@ -29,26 +26,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
     final auth = context.watch<AuthProvider>();
-=======
->>>>>>> main
     final provider = context.watch<ProductProvider>();
 
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
         title: Text('Produtos • ${auth.user?.displayName ?? ''}'),
-=======
-        title: const Text('Produtos'),
->>>>>>> main
         actions: [
           IconButton(
             icon: Icon(provider.showFavoritesOnly ? Icons.filter_alt : Icons.filter_alt_outlined),
             tooltip: provider.showFavoritesOnly ? 'Mostrar todos' : 'Mostrar apenas favoritos',
             onPressed: () => provider.setShowFavoritesOnly(!provider.showFavoritesOnly),
           ),
-<<<<<<< HEAD
           IconButton(
             icon: const Icon(Icons.logout),
             tooltip: 'Sair',
@@ -57,8 +46,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
               context.read<ProductProvider>().clear();
             },
           ),
-=======
->>>>>>> main
         ],
       ),
       body: Builder(
@@ -101,11 +88,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-<<<<<<< HEAD
-                        builder: (_) => ProductDetailScreen(productId: product.id!),
-=======
                         builder: (_) => ProductDetailScreen(product: product),
->>>>>>> main
                       ),
                     );
                   },
