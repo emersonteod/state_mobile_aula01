@@ -101,6 +101,14 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clear() {
+    _allProducts.clear();
+    _showFavoritesOnly = false;
+    error = null;
+    isLoading = false;
+    notifyListeners();
+  }
+
   void setShowFavoritesOnly(bool value) {
     _showFavoritesOnly = value;
     notifyListeners();
