@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
+import '../state/provider/auth_provider.dart';
 import '../state/provider/product_provider.dart';
 import '../widgets/product_card.dart';
 import 'product_detail_screen.dart';
@@ -25,16 +26,25 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<AuthProvider>();
     final provider = context.watch<ProductProvider>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Produtos'),
+        title: Text('Produtos • ${auth.user?.displayName ?? ''}'),
         actions: [
           IconButton(
             icon: Icon(provider.showFavoritesOnly ? Icons.filter_alt : Icons.filter_alt_outlined),
             tooltip: provider.showFavoritesOnly ? 'Mostrar todos' : 'Mostrar apenas favoritos',
             onPressed: () => provider.setShowFavoritesOnly(!provider.showFavoritesOnly),
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Sair',
+            onPressed: () {
+              context.read<AuthProvider>().logout();
+              context.read<ProductProvider>().clear();
+            },
           ),
         ],
       ),

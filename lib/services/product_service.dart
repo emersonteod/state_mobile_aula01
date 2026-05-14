@@ -68,4 +68,18 @@ class ProductService {
       throw Exception('Falha ao excluir produto: ${response.statusCode}');
     }
   }
+<<<<<<< HEAD
+
+  Future<Product> fetchProductById(String id) async {
+    final uri = Uri.https(_baseUrl, '/products/$id');
+    final response = await _client.get(uri);
+
+    if (response.statusCode != 200) {
+      throw Exception('Falha ao carregar detalhes do produto: ${response.statusCode}');
+    }
+
+    return Product.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+  }
+=======
+>>>>>>> main
 }
