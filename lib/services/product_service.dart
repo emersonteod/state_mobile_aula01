@@ -68,6 +68,7 @@ class ProductService {
       throw Exception('Falha ao excluir produto: ${response.statusCode}');
     }
   }
+<<<<<<< HEAD
 
   Future<Product> fetchProductById(String id) async {
     final uri = Uri.https(_baseUrl, '/products/$id');
@@ -79,4 +80,6 @@ class ProductService {
 
     return Product.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   }
+=======
+>>>>>>> main
 }

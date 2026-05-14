@@ -2,24 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart' as provider;
 
-<<<<<<< Updated upstream
-import 'presentation/pages/initial_page.dart';
-=======
 import 'screens/login_screen.dart';
 import 'screens/product_list_screen.dart';
 import 'services/auth_service.dart';
 import 'services/product_service.dart';
 import 'state/provider/auth_provider.dart';
->>>>>>> Stashed changes
 import 'state/provider/product_provider.dart';
 
 void main() {
   runApp(
     ProviderScope(
-<<<<<<< Updated upstream
-      child: provider.ChangeNotifierProvider(
-        create: (_) => ProductProvider(),
-=======
       child: provider.MultiProvider(
         providers: [
           provider.ChangeNotifierProvider(
@@ -29,7 +21,6 @@ void main() {
             create: (_) => ProductProvider(ProductService()),
           ),
         ],
->>>>>>> Stashed changes
         child: const MyApp(),
       ),
     ),
