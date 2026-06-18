@@ -1,6 +1,6 @@
 
-name: flutter_state_patterns
-description: Teaching project comparing Provider, Riverpod and BLoC state management
+name: mobile_arquitetura_01
+description: Projeto Flutter com arquitetura em camadas usando Provider e DummyJSON API
 publish_to: 'none'
 version: 1.0.0
 

@@ -68,7 +68,7 @@ class _ProductListPageState extends State<ProductListPage> {
               width: 56,
               height: 56,
               child: Image.network(
-                product.image,
+                product.imageUrl,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
               ),
@@ -80,7 +80,7 @@ class _ProductListPageState extends State<ProductListPage> {
                 product.favorite ? Icons.star : Icons.star_border,
                 color: product.favorite ? Colors.amber : null,
               ),
-              onPressed: () => productProvider.toggleFavorite(product),
+              onPressed: () => productProvider.toggleFavorite(product.id!),
             ),
             onTap: () {
               Navigator.push(

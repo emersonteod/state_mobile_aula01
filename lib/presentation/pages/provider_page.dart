@@ -43,7 +43,7 @@ class ProviderPage extends StatelessWidget {
                       product.favorite ? Icons.star : Icons.star_border,
                       color: product.favorite ? Colors.amber : null,
                     ),
-                    onPressed: () => provider.toggleFavorite(product),
+                    onPressed: () => provider.toggleFavorite(product.id!),
                   ),
                   tileColor: product.favorite ? Colors.amber.shade50 : null,
                 );

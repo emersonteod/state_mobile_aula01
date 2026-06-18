@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../models/product.dart';
 import '../../state/provider/product_provider.dart';
 
 class ProductDetailPage extends StatelessWidget {
@@ -25,7 +26,7 @@ class ProductDetailPage extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                product.image,
+                product.imageUrl,
                 height: 220,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 180),
@@ -43,7 +44,7 @@ class ProductDetailPage extends StatelessWidget {
               label: Text(product.favorite ? 'Remover dos favoritos' : 'Marcar como favorito'),
               onPressed: () {
                 final provider = context.read<ProductProvider>();
-                provider.toggleFavorite(product);
+                provider.toggleFavorite(product.id!);
               },
             ),
           ],

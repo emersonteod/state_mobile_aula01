@@ -16,21 +16,28 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
-    final image = json['images'] is List && json['images'].isNotEmpty
-        ? json['images'][0] as String
+    final imagesList = json['images'] as List?;
+    final image = imagesList != null && imagesList.isNotEmpty
+        ? imagesList[0] as String? ?? ''
         : json['thumbnail'] as String? ?? json['image'] as String? ?? '';
 
     return Product(
       id: json['id']?.toString(),
       name: json['title'] as String? ?? json['name'] as String? ?? '',
-      price: (json['price'] is int)
-          ? (json['price'] as int).toDouble()
-          : json['price'] is double
-              ? json['price'] as double
-              : double.tryParse(json['price']?.toString() ?? '0') ?? 0,
+      price: _parsePrice(json['price']),
       description: json['description'] as String? ?? '',
       imageUrl: image,
     );
+  }
+
+  static double _parsePrice(dynamic price) {
+    if (price == null) return 0.0;
+    if (price is int) return price.toDouble();
+    if (price is double) return price;
+    if (price is String) {
+      return double.tryParse(price) ?? 0.0;
+    }
+    return 0.0;
   }
 
   Map<String, dynamic> toJson() {
